@@ -19,9 +19,16 @@ EXCUSE = (
     "and I trust it completely."
 )
 
+# The competition scores this exact line: pin its length so a later edit
+# cannot silently change what the entry says.
+EXPECTED_LEN = 150
+
 
 def main() -> int:
     text = EXCUSE
+    if len(text) != EXPECTED_LEN:
+        print(f"excuse is {len(text)} chars, expected {EXPECTED_LEN}", file=sys.stderr)
+        return 1
     if not (1 <= len(text) <= 200):
         print(f"excuse is {len(text)} chars, must be 1-200", file=sys.stderr)
         return 1
